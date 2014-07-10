@@ -114,7 +114,6 @@ class FitsViewer(QtGui.QMainWindow):
         self.fitsimage.deleteAllObjects()
 
     def load_file(self, filepath):
-        filepath = '1F345867992EFFB0J3P1212L0M1.img'
         image = PDSImage.PDSImage(logger=self.logger)
         image.load_file(filepath)
 
@@ -122,8 +121,8 @@ class FitsViewer(QtGui.QMainWindow):
         self.setWindowTitle(filepath)
 
     def open_file(self):
-        res = QtGui.QFileDialog.getOpenFileName(self, "Open FITS file",
-                                                     ".", "FITS files (*.fits)")
+        res = QtGui.QFileDialog.getOpenFileName(self, "Open PDS file",
+                                                     ".", "PDS files (*.img)")
         if isinstance(res, tuple):
             fileName = res[0].encode('ascii')
         else:
