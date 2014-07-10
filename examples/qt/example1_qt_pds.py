@@ -11,7 +11,7 @@
 import sys, os
 import logging
 
-from ginga import AstroImage
+from ginga import PDSImage
 from ginga.qtw.QtHelp import QtGui, QtCore
 from ginga.qtw.ImageViewQt import ImageViewZoom
 
@@ -70,7 +70,8 @@ class FitsViewer(QtGui.QMainWindow):
         vw.setLayout(vbox)
 
     def load_file(self, filepath):
-        image = AstroImage.AstroImage(logger=self.logger)
+        filepath = '1F345867992EFFB0J3P1212L0M1.img'
+        image = PDSImage.PDSImage(logger=self.logger)
         image.load_file(filepath)
         self.fitsimage.set_image(image)
         self.setWindowTitle(filepath)
@@ -88,9 +89,9 @@ class FitsViewer(QtGui.QMainWindow):
         fileName = paths[0]
         self.load_file(fileName)
 
-        
+
 def main(options, args):
-    
+
     app = QtGui.QApplication(sys.argv)
     app.connect(app, QtCore.SIGNAL('lastWindowClosed()'),
                 app, QtCore.SLOT('quit()'))
@@ -116,5 +117,5 @@ def main(options, args):
 
 if __name__ == '__main__':
     main(None, sys.argv[1:])
-    
+
 # END
